@@ -34,8 +34,8 @@ const FeaturesSection = () => {
                 className="group animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-50 mb-6 transition-all duration-300 group-hover:bg-[var(--color-primary-light)] group-hover:scale-110">
-                  <Icon className="w-8 h-8 text-gray-700 group-hover:text-white" />
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gray-50 mb-6">
+                  <Icon className="w-8 h-8 text-gray-700" />
                 </div>
                 <h3 className="text-xl font-display font-semibold mb-3 text-gray-900">
                   {feature.title}
