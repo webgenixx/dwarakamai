@@ -25,7 +25,7 @@ const HeroBanner = () => {
   }, [next]);
 
   return (
-    <section className="relative w-full h-[70vh] min-h-[500px] overflow-hidden">
+    <section className="relative w-full overflow-hidden" style={{ height: 'calc(100svh - 64px)', minHeight: '480px', maxHeight: '800px' }}>
 
       {/* Background images */}
       {CAROUSEL_IMAGES.map((img, i) => (
@@ -46,7 +46,7 @@ const HeroBanner = () => {
       <div className="absolute inset-0 bg-black/45" />
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
 
       {/* Glow orbs */}
       <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-orange-500/20 blur-[100px] pointer-events-none" />
@@ -54,18 +54,18 @@ const HeroBanner = () => {
       <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-80 h-40 rounded-full bg-orange-600/20 blur-[80px] pointer-events-none" />
 
       {/* Centered text content */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center px-4">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center px-4 pb-10">
 
         {/* Badge */}
-        <span className="uppercase tracking-[0.25em] text-sm md:text-base font-extrabold mb-5 block text-orange-300 drop-shadow-[0_0_12px_rgba(251,146,60,0.8)]">
+        <span className="uppercase tracking-[0.2em] text-xs sm:text-sm md:text-base font-extrabold mb-3 sm:mb-5 block text-orange-300 drop-shadow-[0_0_12px_rgba(251,146,60,0.8)]">
           ✦ Premium Digital Studio ✦
         </span>
 
         {/* Headline */}
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white max-w-5xl leading-[1.1] mb-4 drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)]">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white max-w-5xl leading-[1.1] mb-2 sm:mb-4 drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)]">
           Capture Memories.
         </h1>
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black max-w-5xl leading-[1.1] mb-4">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black max-w-5xl leading-[1.1] mb-2 sm:mb-4">
           <span
             className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-500 to-red-500"
             style={{ filter: 'drop-shadow(0 0 20px rgba(251,146,60,0.7))' }}
@@ -73,15 +73,15 @@ const HeroBanner = () => {
             Create Emotions.
           </span>
         </h1>
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white max-w-5xl leading-[1.1] mb-10 drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)]">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white max-w-5xl leading-[1.1] mb-6 sm:mb-10 drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)]">
           Celebrate Every Moment.
         </h1>
 
         {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 items-center">
+        <div className="flex flex-row gap-3 items-center justify-center flex-wrap">
           <button
             onClick={() => navigate('/shop')}
-            className="btn-primary group shadow-[0_0_24px_rgba(234,88,12,0.6)] hover:shadow-[0_0_36px_rgba(234,88,12,0.9)] transition-shadow"
+            className="btn-primary group shadow-[0_0_24px_rgba(234,88,12,0.6)] hover:shadow-[0_0_36px_rgba(234,88,12,0.9)] transition-shadow text-sm px-6 py-2.5 sm:px-8 sm:py-3"
           >
             Shop Now
             <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ const HeroBanner = () => {
 
           <button
             onClick={() => navigate('/services')}
-            className="flex items-center gap-2 px-8 py-3 rounded-xl font-body font-bold text-sm border border-white/30 bg-white/10 text-white hover:bg-white/20 transition-all backdrop-blur-sm shadow-[0_0_16px_rgba(255,255,255,0.1)]"
+            className="flex items-center gap-2 px-6 py-2.5 sm:px-8 sm:py-3 rounded-xl font-body font-bold text-sm border border-white/30 bg-white/10 text-white hover:bg-white/20 transition-all backdrop-blur-sm shadow-[0_0_16px_rgba(255,255,255,0.1)]"
           >
             <span className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0 shadow-[0_0_10px_rgba(234,88,12,0.8)]">
               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@ const HeroBanner = () => {
       </div>
 
       {/* Carousel dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
         {CAROUSEL_IMAGES.map((_, i) => (
           <button
             key={i}

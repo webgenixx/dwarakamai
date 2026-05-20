@@ -198,7 +198,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-4'}`}>
+    <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg pt-2 pb-2' : 'bg-white pt-4 pb-4'}`}>
       <div className="container-custom">
         <div className="flex justify-between items-center h-12">
           {/* Logo */}
