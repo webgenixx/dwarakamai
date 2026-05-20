@@ -224,6 +224,10 @@
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)];
   }
+  .py-4 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 1rem !important;
+  }
   .pt-12 {
     padding-top: 1.2rem !important;
   }
