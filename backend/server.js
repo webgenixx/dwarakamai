@@ -73,6 +73,7 @@ const allowedOrigins = [
   'https://dwarakamaidigitalphotostudio.com',
   'https://www.dwarakamaidigitalphotostudio.com',
   'https://dwarakamai-digital-photo-studio.onrender.com',
+  'https://dwarakamai-1zio.onrender.com',
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
