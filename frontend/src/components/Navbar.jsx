@@ -202,7 +202,7 @@ const Navbar = () => {
       <div className="container-custom">
         <div className="flex justify-between items-center h-12">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 flex-shrink-0 group">
+          <Link to="/" className="flex items-center gap-2 flex-shrink-0 group">
             <img 
               src="/logo.png" 
               alt="Dwarakamai digital photo studio" 
@@ -214,7 +214,7 @@ const Navbar = () => {
               }}
             />
             <div className="flex flex-col">
-              <span className="text-[26px] font-display font-bold tracking-tight text-[var(--color-primary)] uppercase leading-none">
+              <span className="text-[24px] font-display font-bold tracking-tight text-[var(--color-primary)] uppercase leading-none">
                 Dwarakamai
               </span>
               <span className="text-[10px] font-body font-bold text-[var(--color-primary)] uppercase tracking-[0.2em] leading-none mt-1">
