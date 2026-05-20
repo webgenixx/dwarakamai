@@ -27,8 +27,9 @@ export default {
         'valentine-darkRed': '#be123c',
         'valentine-pink': '#fb7185',
         'valentine-rose': '#ffe4e6',
-        'orange-primary': '#f97316',
-        'orange-hover': '#ea580c',
+        'orange-primary': '#EA580C',
+        'orange-hover': '#C2410C',
+        'orange-light': '#FFEDD5',
       },
       fontFamily: {
         sans: ['Outfit', 'Inter', 'sans-serif'],

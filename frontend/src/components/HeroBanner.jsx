@@ -1,89 +1,111 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+const CAROUSEL_IMAGES = [
+  '/assets/wedding-1.png',
+  '/assets/wedding-2.png',
+  '/assets/wedding-3.png',
+];
 
 const HeroBanner = () => {
   const navigate = useNavigate();
-  const [bgImage, setBgImage] = useState('/assets/hero-bg.png');
+  const [current, setCurrent] = useState(0);
 
-  useEffect(() => {
-    const fetchBanner = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/homepage/content`);
-        const data = await response.json();
-        if (data.success && data.content?.hero_banner?.image_url) {
-          const imgUrl = data.content.hero_banner.image_url;
-          setBgImage(imgUrl.startsWith('http') ? imgUrl : `${import.meta.env.VITE_API_URL}${imgUrl}`);
-        }
-      } catch (error) {
-        console.error('Failed to fetch hero banner:', error);
-      }
-    };
-    fetchBanner();
+  const goTo = useCallback((index) => {
+    setCurrent(index);
   }, []);
 
-  return (
-    <section className="relative w-full h-[60vh] overflow-hidden">
-      {/* === MOBILE / TABLET: image as full centered background === */}
-      <div className="absolute inset-0 lg:hidden z-0">
-        <img 
-          src={bgImage} 
-          alt="Hero Background"
-          className="w-full h-full object-cover object-[75%_center]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
-      </div>
+  const next = useCallback(() => {
+    setCurrent((c) => (c + 1) % CAROUSEL_IMAGES.length);
+  }, []);
 
-      {/* === DESKTOP: side-by-side layout === */}
-      <div className="hidden lg:flex absolute inset-0">
-        {/* Left spacer for text (handled by content below) */}
-        <div className="w-[50%] bg-white" />
-        {/* Right image */}
-        <div className="relative w-[50%]">
-          <img 
-            src={bgImage} 
-            alt="Hero Background"
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
+
+  return (
+    <section className="relative w-full h-[85vh] min-h-[500px] overflow-hidden">
+
+      {/* Full-width background image */}
+      {CAROUSEL_IMAGES.map((img, i) => (
+        <div
+          key={img}
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: i === current ? 1 : 0 }}
+        >
+          <img
+            src={img}
+            alt={`Hero slide ${i + 1}`}
             className="w-full h-full object-cover object-center"
           />
-          {/* Soft left-edge blend */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
         </div>
-      </div>
+      ))}
 
-      {/* Content Container */}
-      <div className="relative z-10 w-full h-full flex items-end sm:items-center container-custom pb-4 sm:pb-4 sm:pt-4">
-        <div className="lg:max-w-xl md:max-w-2xl max-w-full animate-slide-up text-left">
-          {/* Badge */}
-          <span className="badge-yellow mb-1 inline-block">Suitable for all occasions</span>
+      {/* White fade overlay — bottom fade like the screenshot */}
+      <div className="absolute inset-0 bg-white/40" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
 
-          {/* Headline */}
-          <h1 className="text-[20px] leading-[1.1] md:text-7xl font-display font-bold mb-0 text-gray-900">
-            Turn Your <span className="italic text-[var(--color-primary)]">Memories</span> <br className="hidden sm:block" />
-            into <span className="text-gray-900">Beautiful Gifts</span>
-          </h1>
+      {/* Centered text content */}
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center text-center px-4">
 
-          <p className="text-base md:text-xl text-gray-600 mb-0 max-w-lg font-body leading-relaxed">
-            Customize T-shirts, Photo Frames, Mugs, and Premium Gifts crafted just for your special moments. Crafted in Eluru, delivered with care.
-          </p>
+        {/* Badge */}
+        <span className="text-[var(--color-primary)] uppercase tracking-[0.2em] sm:tracking-[0.3em] text-m sm:text-sm md:text-base font-semibold mb-4 block">
+          Premium Digital Studio
+        </span>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button 
-              onClick={() => navigate('/shop')}
-              className="btn-primary flex items-center justify-center group"
-            >
-              Customize Now
-              <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        {/* Headline */}
+        <h1 className="font-display text-3x1 sm:text-6xl md:text-6xl lg:text-7xl font-bold text-black max-w-5xl leading-tight mb-8">
+          Capture Memories.<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFEDD5] via-[#EA580C] to-[#C2410C]">
+            Create Emotions.
+          </span>{' '}<br />
+          Celebrate Every Moment.
+        </h1>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
+          <button
+            onClick={() => navigate('/shop')}
+            className="btn-primary group"
+          >
+            Shop Now
+            <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => navigate('/services')}
+            className="flex items-center gap-2 px-8 py-3 rounded-xl font-body font-bold text-sm border border-gray-300 bg-white/70 text-gray-800 hover:bg-white transition-all backdrop-blur-sm"
+          >
+            <span className="w-6 h-6 rounded-full bg-[var(--color-primary)] flex items-center justify-center flex-shrink-0">
+              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
               </svg>
-            </button>
-            <button 
-              onClick={() => navigate('/shop/personalised-gifts')}
-              className="px-8 py-4 sm:py-3 rounded-md font-medium text-sm border border-gray-400 text-gray-700 hover:bg-gray-50 transition-all shadow-sm text-center"
-            >
-              Explore Gifts
-            </button>
-          </div>
+            </span>
+            Explore Services
+          </button>
         </div>
       </div>
+
+      {/* Carousel dots only */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+        {CAROUSEL_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className="rounded-full transition-all duration-500"
+            style={{
+              width: i === current ? '24px' : '8px',
+              height: '8px',
+              background: i === current ? '#EA580C' : '#D1D5DB',
+            }}
+          />
+        ))}
+      </div>
+
     </section>
   );
 };

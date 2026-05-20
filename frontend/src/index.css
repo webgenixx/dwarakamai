@@ -4,6 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F3F4F6;
+}
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #EA580C;
+}
+
+/* ── Glass Effect ── */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(234, 88, 12, 0.2);
+}
+
 /* ── Keyframe Animations ── */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
@@ -63,32 +86,32 @@
 @layer base {
   :root {
     /* Primary brand colors */
-    --color-primary: #9D4E8D; /* Purple/Magenta */
-    --color-primary-dark: #7A3B6D;
-    --color-primary-light: #C48EBC;
-    
+    --color-primary: #EA580C;
+    --color-primary-dark: #C2410C;
+    --color-primary-light: #FFEDD5;
+
     /* Secondary/Accent colors */
-    --color-accent: #F7D060; /* Golden Yellow */
-    --color-accent-hover: #EAB308;
-    
+    --color-accent: #EA580C;
+    --color-accent-hover: #C2410C;
+
     /* Neutral colors */
     --color-background: #FFFFFF;
-    --color-background-alt: #F9FAFB;
-    --color-text-main: #1F2937;
+    --color-background-alt: #F3F4F6;
+    --color-text-main: #111827;
     --color-text-muted: #6B7280;
     --color-border: #E5E7EB;
 
     /* Font families */
-    --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
-    --font-body: 'Outfit', 'Inter', sans-serif;
+    --font-display: 'Playfair Display', 'Cormorant Garamond', serif;
+    --font-body: 'Inter', 'Outfit', sans-serif;
 
     /* Semantic aliases for Tailwind/Shadcn */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --primary: 312 33% 46%; /* Matches #9D4E8D approx */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 45 92% 67%; /* Matches #F7D060 approx */
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --foreground: 220 13% 9%;
+    --primary: 21 90% 48%; /* #EA580C */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 27 100% 92%; /* #FFEDD5 */
+    --secondary-foreground: 220 13% 9%;
   }
 
   html {
@@ -157,26 +180,26 @@
     @apply bg-[var(--color-primary)] text-white px-8 py-3 rounded-xl font-body font-bold text-sm transition-all duration-300 inline-flex items-center justify-center gap-2;
   }
   .btn-primary:hover {
-    @apply bg-[var(--color-primary-dark)] -translate-y-0.5 shadow-lg shadow-purple-200;
+    @apply bg-[var(--color-primary-dark)] -translate-y-0.5 shadow-lg shadow-orange-200;
   }
 
   .btn-accent {
-    @apply bg-[var(--color-accent)] text-gray-900 px-8 py-3 rounded-xl font-body font-bold text-sm transition-all duration-300 inline-flex items-center justify-center gap-2;
+    @apply bg-[var(--color-accent)] text-white px-8 py-3 rounded-xl font-body font-bold text-sm transition-all duration-300 inline-flex items-center justify-center gap-2;
   }
   .btn-accent:hover {
-    @apply bg-[var(--color-accent-hover)] -translate-y-0.5 shadow-lg shadow-yellow-200;
+    @apply bg-[var(--color-accent-hover)] -translate-y-0.5 shadow-lg shadow-orange-200;
   }
 
   .btn-outline {
     @apply border-2 border-gray-100 text-gray-700 px-8 py-3 rounded-xl font-body font-bold text-sm transition-all duration-300 inline-flex items-center justify-center gap-2;
   }
   .btn-outline:hover {
-    @apply border-[var(--color-primary)] text-[var(--color-primary)] -translate-y-0.5 bg-purple-50/30;
+    @apply border-[var(--color-primary)] text-[var(--color-primary)] -translate-y-0.5 bg-orange-50/30;
   }
 
   /* ── Cards ── */
   .card-premium {
-    @apply bg-white rounded-[40px] overflow-hidden shadow-sm border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-100/30;
+    @apply bg-white rounded-[40px] overflow-hidden shadow-sm border border-gray-100 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-100/30;
   }
 
   /* ── Section Titles ── */
@@ -193,13 +216,13 @@
   }
 
   .badge-yellow {
-    @apply bg-[#F7D060] text-gray-900 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest inline-block mb-6 shadow-sm;
+    @apply bg-[#FFEDD5] text-orange-700 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest inline-block mb-6 shadow-sm;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)];
   }
   .pt-12 {
     padding-top: 1.2rem !important;
