@@ -37,18 +37,7 @@ const BackendWakeup = () => {
 
   if (!showMessage) return null;
 
-  return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-valentine-red text-white py-3 px-4 text-center shadow-lg">
-      <div className="flex items-center justify-center space-x-3">
-        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-        <p className="font-medium">
-          {isWaking 
-            ? '⏳ Waking up backend service... This may take 30-50 seconds (Render free tier)'
-            : '🔄 Connecting to backend...'}
-        </p>
-      </div>
-    </div>
-  );
+  return null;
 };
 
 export default BackendWakeup;

@@ -214,10 +214,10 @@ const Navbar = () => {
               }}
             />
             <div className="flex flex-col">
-              <span className="text-[30px] font-display font-bold tracking-tight text-[var(--color-primary)] uppercase leading-none">
+              <span className="text-[26px] font-display font-bold tracking-tight text-[var(--color-primary)] uppercase leading-none">
                 Dwarakamai
               </span>
-              <span className="text-[12px] font-body font-bold text-[var(--color-primary)] uppercase tracking-[0.2em] leading-none mt-1">
+              <span className="text-[10px] font-body font-bold text-[var(--color-primary)] uppercase tracking-[0.2em] leading-none mt-1">
                 Digital Photo Studio
               </span>
             </div>

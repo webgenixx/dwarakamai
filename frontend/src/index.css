@@ -116,6 +116,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -125,6 +126,7 @@
     font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -223,10 +225,6 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)];
-  }
-  .py-4 {
-    padding-top: 2.5rem !important;
-    padding-bottom: 1rem !important;
   }
   .pt-12 {
     padding-top: 1.2rem !important;

@@ -25,7 +25,7 @@ const HeroBanner = () => {
   }, [next]);
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ height: 'calc(100svh - 64px)', minHeight: '480px', maxHeight: '800px' }}>
+    <section className="relative w-full overflow-hidden" style={{ height: 'calc(65svh - 64px)', minHeight: '480px', maxHeight: '800px' }}>
 
       {/* Background images */}
       {CAROUSEL_IMAGES.map((img, i) => (
