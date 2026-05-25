@@ -109,6 +109,7 @@ function App() {
                     <PageTransition>
                       <Routes>
                         <Route path="/" element={<AdminRedirect />} />
+                        <Route path="/home" element={<HomePage />} />
                         <Route path="/shop" element={<ShopPage />} />
                         <Route path="/shop/:category" element={<ShopPage />} />
                         <Route path="/product/:id" element={<ProductDetailPage />} />

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { categories as categoryCatalog } from '../data/categories';
 
 const ShopByOccasionSection = () => {
   const navigate = useNavigate();
@@ -52,6 +53,24 @@ const ShopByOccasionSection = () => {
     navigate(`/shop/${categorySlug}`);
   };
 
+  const getCategoryImage = (category) => {
+    if (category.image_url) {
+      return category.image_url.startsWith('http')
+        ? category.image_url
+        : `${import.meta.env.VITE_API_URL}${category.image_url}`;
+    }
+
+    if (category.image) {
+      return category.image;
+    }
+
+    const catalogMatch = categoryCatalog.find(
+      (item) => item.slug === category.slug || item.name === category.name
+    );
+
+    return catalogMatch?.image || 'https://via.placeholder.com/200';
+  };
+
   return (
     <section className="py-4 bg-white">
       <div className="container-custom">
@@ -73,11 +92,7 @@ const ShopByOccasionSection = () => {
               {/* Circular Image Container */}
               <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg shadow-gray-200 transition-all duration-500 group-hover:shadow-[var(--color-primary-light)] group-hover:border-[var(--color-primary-light)]">
                 <img
-                  src={
-                    category.image_url
-                      ? (category.image_url.startsWith('http') ? category.image_url : `${import.meta.env.VITE_API_URL}${category.image_url}`)
-                      : (category.image || `https://via.placeholder.com/200`)
-                  }
+                  src={getCategoryImage(category)}
                   alt={category.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
                 />

@@ -18,6 +18,7 @@ export const env = {
 
   // Feature Flags
   enablePayment: import.meta.env.VITE_ENABLE_PAYMENT === 'true',
+  enableTestPayments: import.meta.env.VITE_ENABLE_TEST_PAYMENTS === 'true',
   enableEmailVerification: import.meta.env.VITE_ENABLE_EMAIL_VERIFICATION === 'true',
   enableAnalytics: import.meta.env.VITE_ENABLE_ANALYTICS === 'true',
 

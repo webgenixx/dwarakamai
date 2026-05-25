@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard, Package, ShoppingCart, Users, Tag,
-  TrendingUp, LogOut, Menu, X, Shield, FileText, MessageSquare, Send, Image, Bell
+  TrendingUp, LogOut, Menu, X, Shield, FileText, MessageSquare, Send, Image, Bell, ExternalLink
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
@@ -11,6 +11,7 @@ const AdminLayout = ({ children }) => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const websiteUrl = '/home';
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -109,7 +110,14 @@ const AdminLayout = ({ children }) => {
           <div className="px-4 py-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <div className="flex-1 lg:hidden"></div>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3 sm:space-x-4">
+                <a
+                  href={websiteUrl}
+                  className="inline-flex items-center space-x-2 rounded-lg border border-orange-primary px-3 py-2 text-sm font-semibold text-orange-primary transition-colors hover:bg-orange-primary hover:text-white"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>View Website</span>
+                </a>
                 <div className="text-sm text-gray-600">
                   Logged in as: <span className="font-semibold text-orange-primary">{user?.name || user?.email || 'Admin'}</span>
                 </div>

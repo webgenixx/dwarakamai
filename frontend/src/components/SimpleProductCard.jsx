@@ -9,7 +9,7 @@ const SimpleProductCard = ({ product, onClick }) => {
 
   return (
     <div 
-      className="card-premium group cursor-pointer h-full flex flex-col"
+      className="card-premium trending-product-card group cursor-pointer h-full flex flex-col"
       onClick={onClick}
     >
       {/* Image Container */}

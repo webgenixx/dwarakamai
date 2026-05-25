@@ -330,22 +330,20 @@ const PaymentPage = () => {
                   </div>
                 </div>
 
-                {(import.meta.env.MODE === 'development' || process.env.NODE_ENV === 'development') && (
-                  <div className="mb-8 p-4 bg-yellow-50 border-2 border-yellow-200 rounded-2xl">
-                    <label className="flex items-center gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={useTestMode}
-                        onChange={(e) => setUseTestMode(e.target.checked)}
-                        className="w-5 h-5 rounded"
-                      />
-                      <span className="text-xs font-body font-bold text-yellow-700 uppercase tracking-widest">
-                        🧪 Test Mode - Skip Payment Gateway
-                      </span>
-                    </label>
-                    <p className="text-xs text-yellow-600 mt-2 ml-8">Order will be marked as paid immediately for testing purposes</p>
-                  </div>
-                )}
+                <div className="mb-8 p-4 bg-yellow-50 border-2 border-yellow-200 rounded-2xl">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={useTestMode}
+                      onChange={(e) => setUseTestMode(e.target.checked)}
+                      className="w-5 h-5 rounded"
+                    />
+                    <span className="text-xs font-body font-bold text-yellow-700 uppercase tracking-widest">
+                      🧪 Test Mode - Skip Payment Gateway
+                    </span>
+                  </label>
+                  <p className="text-xs text-yellow-600 mt-2 ml-8">Order will be marked as paid immediately for testing purposes</p>
+                </div>
 
                 <button
                   onClick={handleProcessPayment}

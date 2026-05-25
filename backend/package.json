@@ -9,6 +9,7 @@
     "dev": "nodemon server.js",
     "migrate": "node scripts/migrate.js",
     "create-admin": "node scripts/create-admin.js",
+    "seed-categories": "node scripts/seed-categories.js",
     "create-services-table": "node scripts/create-services-table.js",
     "create-otp-table": "node scripts/create-otp-table.js",
     "test-email": "node scripts/test-email.js"
